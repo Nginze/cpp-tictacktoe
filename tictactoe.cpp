@@ -20,7 +20,7 @@ int main()
     while(!isDraw()){
         playerMakeMove();
         if(hasWinner() != ' '){
-            cout << "player using" << hasWinner() << "wins";
+            cout << "player using " << hasWinner() << " wins";
             break;
         }
         cpuMakeMove();
@@ -72,19 +72,14 @@ void playerMakeMove(){
 void cpuMakeMove(){
     srand(time(NULL));
     int x, y;
-    x = rand() % 3;
-    y = rand() % 3;
-
-    do{
-        if(board[x][y] == ' '){
-            board[x][y] = 'O';
-            break;
-        }
+    while(board[x][y] != ' '){
         x = rand() % 3;
         y = rand() % 3;
-    }
-    while(board[x][y] != ' ');
+    };
+    board[x][y] = 'O';
     drawBoard();
+
+   
 }
 bool isDraw () {
     for(int i = 0; i < 3; i++){
